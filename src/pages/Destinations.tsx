@@ -52,7 +52,7 @@ export function Destinations() {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url(${puriBeachImg})`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80')`,
             backgroundPosition: 'center',
             backgroundSize: 'cover'
           }}>

@@ -69,7 +69,7 @@ export function Fleet() {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80')`,
             backgroundPosition: 'center',
             backgroundSize: 'cover'
           }}>
