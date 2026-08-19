@@ -29,6 +29,9 @@ export function Navbar() {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const isDarkTheme = isScrolled || location.pathname === '/';
+  const textColorClass = isDarkTheme ? 'text-brand-navy' : 'text-white';
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-white/80 backdrop-blur-md shadow-sm' : 'py-8 bg-transparent'}`}>
@@ -36,7 +39,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-3xl font-bold text-brand-navy">
+          <span className={`text-3xl font-bold ${textColorClass}`}>
             ST&T
           </span>
         </Link>
@@ -48,9 +51,9 @@ export function Navbar() {
               key={link.name}
               to={link.path}
               className={({ isActive }) => 
-                `relative text-lg px-3 font-medium transition-all duration-300 hover:text-cyan-600 ${
-                  isActive ? 'bg-black/5 rounded ' : 'text-brand-navy'
-                }`
+                `relative text-lg px-3 font-medium transition-all duration-300 ${
+                  isDarkTheme ? 'hover:text-cyan-600 text-brand-navy' : 'hover:text-white/80 text-white'
+                } ${isActive ? (isDarkTheme ? 'bg-black/5 rounded' : 'bg-white/20 rounded') : ''}`
               }
             >
               {({ isActive }) => (
@@ -59,7 +62,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="navUnderline"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-cyan-500 rounded-full"
+                      className={`absolute -bottom-1 left-0 right-0 h-0.5 rounded-full ${isDarkTheme ? 'bg-cyan-500' : 'bg-white'}`}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -70,14 +73,18 @@ export function Navbar() {
           
           <Link 
             to="/signup"
-            className="px-6 py-2 border border-brand-navy rounded-lg text-lg font-medium text-brand-navy hover:bg-brand-navy hover:text-white transition-all ml-4"
+            className={`px-6 py-2 border rounded-lg text-lg font-medium transition-all ml-4 ${
+              isDarkTheme 
+                ? 'border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white' 
+                : 'border-white text-white hover:bg-white hover:text-brand-navy'
+            }`}
           >
             Sign up
           </Link>
 
           <div className="flex items-center gap-1 cursor-pointer group ml-6">
-            <span className="text-lg font-medium text-brand-navy">EN</span>
-            <svg className="w-4 h-4 text-brand-navy group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span className={`text-lg font-medium ${textColorClass}`}>EN</span>
+            <svg className={`w-4 h-4 ${textColorClass} group-hover:translate-y-0.5 transition-transform`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </div>
@@ -86,7 +93,7 @@ export function Navbar() {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setIsMobileMenuOpen(true)}
-          className="lg:hidden p-2 text-brand-navy"
+          className={`lg:hidden p-2 ${textColorClass}`}
         >
           <Menu className="w-8 h-8" />
         </button>
