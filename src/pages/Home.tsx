@@ -42,16 +42,24 @@ export function Home() {
 
       {/* New Hero Section */}
       <section 
-        className="relative pt-32 pb-20 md:pt-40 md:pb-24 px-6 min-h-[90vh] md:min-h-screen flex items-center z-10 bg-cover bg-center md:bg-[center_top] bg-no-repeat transition-all duration-500 overflow-hidden"
-        style={{ backgroundImage: `url(${heroBannerImg})` }}
+        className="relative pt-32 pb-20 md:pt-40 md:pb-24 px-6 min-h-[90vh] md:min-h-screen flex items-center z-10 overflow-hidden"
       >
-        <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Scrollable Background Image for Mobile */}
+        <div className="absolute inset-0 z-0 overflow-x-auto overflow-y-hidden scrollbar-hide md:overflow-hidden touch-pan-x" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <img 
+            src={heroBannerImg} 
+            alt="Odisha Hero Background" 
+            className="h-full w-auto max-w-none md:w-full md:object-cover md:object-[center_top] block"
+          />
+        </div>
+
+        <div className="container mx-auto max-w-7xl relative z-10 pointer-events-none">
           <div className="w-full lg:w-[50%] xl:w-[45%] text-center lg:text-left mt-10 md:mt-0 flex flex-col items-center lg:items-start">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-black leading-[1.1] mb-6 flex flex-col"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-black leading-[1.1] mb-6 flex flex-col pointer-events-auto"
             >
               <span className="font-semibold tracking-tight">Enjoy Your</span>
               <span className="italic font-light tracking-wide mt-2" style={{ fontFamily: 'var(--font-script, cursive)' }}>Moment</span>
@@ -61,7 +69,7 @@ export function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-black/80 text-base sm:text-lg md:text-xl md:leading-relaxed mb-10 max-w-lg font-medium mx-auto lg:mx-0"
+              className="text-black/80 text-base sm:text-lg md:text-xl md:leading-relaxed mb-10 max-w-lg font-medium mx-auto lg:mx-0 pointer-events-auto"
             >
               Discover the <strong className="text-black">timeless beauty</strong> and vibrant <strong className="text-black">culture</strong> of Odisha, where spirituality meets pristine landscapes. Plan your dream getaway today.
             </motion.p>
@@ -70,7 +78,7 @@ export function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-8"
+              className="flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-8 pointer-events-auto"
             >
               <button className="bg-gradient-to-r from-[#2186b5] to-[#4abbe1] hover:scale-105 transition-transform text-white px-10 py-4 rounded-full font-semibold shadow-2xl shadow-[#2186b5]/40 text-lg w-full sm:w-auto">
                 Explore
