@@ -1,5 +1,6 @@
 import { ScrollReveal } from '../components/ScrollReveal';
 import { ShieldCheck, MapPin, Gauge, User } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const fleetData = [
   {
@@ -62,16 +63,35 @@ const fleetData = [
 
 export function Fleet() {
   return (
-    <div className="w-full pt-24 bg-slate-50 min-h-screen">
-      {/* Header */}
-      <section className="container mx-auto px-4 py-16 text-center">
-        <ScrollReveal>
-          <span className="text-brand-orange font-bold uppercase tracking-widest text-sm">Our Fleet</span>
-          <h1 className="text-5xl md:text-6xl font-serif mt-2 text-brand-navy font-bold">Travel in Comfort</h1>
-          <p className="text-ocean/70 text-lg max-w-2xl mx-auto mt-6">
+    <div className="w-full bg-slate-50 min-h-screen">
+      {/* Hero */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden mb-16">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80')`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+          }}>
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+
+        <div className="container relative z-10 px-4 text-center mt-20">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-serif text-white mb-6">
+            Travel in Comfort
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-white/90 font-light max-w-2xl mx-auto">
             Explore Odisha with our premium vehicles, experienced drivers, and professional tour guides. Your safety and comfort are our top priorities.
-          </p>
-        </ScrollReveal>
+          </motion.p>
+        </div>
       </section>
 
       {/* Fleet Grid */}

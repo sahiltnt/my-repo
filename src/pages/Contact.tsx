@@ -4,17 +4,36 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 export function Contact() {
   return (
-    <div className="w-full pt-24 pb-24">
-      <section className="container mx-auto px-4 mb-16 text-center">
-        <ScrollReveal>
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">
+    <div className="w-full pb-24">
+      {/* Hero */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden mb-16">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1590766940554-634e1dc68e4a?w=1920&q=80')`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+          }}>
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        <div className="container relative z-10 px-4 text-center mt-20">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-serif text-white mb-6">
             Plan Your Journey
-          </h1>
-          <p className="text-lg text-ocean/70 dark:text-offwhite/70 max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-white/90 font-light max-w-2xl mx-auto">
             Get in touch with our travel experts to craft your perfect Odisha
             itinerary.
-          </p>
-        </ScrollReveal>
+          </motion.p>
+        </div>
       </section>
 
       <section className="container mx-auto px-4">
